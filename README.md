@@ -1,7 +1,7 @@
 # Super Resolution and Artifact Removal on Deep Lesion Dataset
 
 ## Overview
-This project focuses on enhancing medical imaging by performing super-resolution on downsampled images and removing artifacts from bilinear interpolated images. Utilizing a deep learning approach, this project aims to reconstruct high-resolution images from their lower-resolution counterparts while simultaneously reducing noise and improving the overall quality.
+This project focuses on enhancing medical imaging by performing super-resolution on downsampled images and removing artifacts from those images. Utilizing a deep learning approach, this project aims to reconstruct high-resolution images from their lower-resolution counterparts while simultaneously reducing noise and improving the overall quality.
 
 ## Results
 The results showcase the ability of the model to enhance image resolution and remove artifacts. The following metrics have been used to quantify the performance:
