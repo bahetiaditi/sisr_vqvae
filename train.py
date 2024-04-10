@@ -120,21 +120,40 @@ plt.tight_layout()
 plt.show()
 
 
-if __name__ == '__main__':
+def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Load the dataset
-    dataset = CustomDataset('/path/to/your/dataset')
+    dataset_path = "/path/to/your/dataset"  # Update this path
+    dataset = CustomDataset(dataset_path)
     train_size = int(0.8 * len(dataset))
     test_size = len(dataset) - train_size
     train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
 
+    # Create data loaders
     train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
-    test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=16)
 
+    for i, (original_batch, downsampled_batch, bilinear_batch, bilinear_with_artifacts_batch) in enumerate(train_dataloader):
+    if i >= 4:  
+        break
+    show_images(original_batch[0], downsampled_batch[0], bilinear_batch[0], bilinear_with_artifacts_batch[0], i)
+
+    # Initialize the model
     model = Model(num_hiddens=128, num_residual_layers=2, num_residual_hiddens=32,
                   num_embeddings=512, embedding_dim=64, commitment_cost=0.25).to(device)
+
+    # Optimizer
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
+
+    # Number of epochs
+    num_epochs = 10
+
+    for epoch in range(1, num_epochs + 1):
+        train(model, device, train_loader, optimizer, epoch)
+        test(model, device, test_loader)
+
+if __name__ == '__main__':
+    main()
 
     num_epochs = 10
     for epoch in range(1, num_epochs + 1):
