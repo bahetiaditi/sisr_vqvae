@@ -8,7 +8,7 @@ The results showcase the ability of the model to enhance image resolution and re
 - **Total Loss**: The combined measure of reconstruction error and any additional loss components, such as a vector quantization loss.
 - **PSNR Score**: Peak Signal-to-Noise Ratio, a measure of how accurately the reconstructed image resembles the original high-resolution image.
 - **SSIM Score**: Structural Similarity Index Measure, a perception-based metric that considers changes in structural information, luminance, and contrast.
-
+![Results](image.png)
 
 ## Dataset
 The dataset comprises medical images sourced from the [Deep Lesion Dataset](https://nihcc.app.box.com/v/DeepLesion). Each image has undergone preprocessing steps, including resizing, normalization, and augmentation, to prepare for training.
